@@ -1,0 +1,137 @@
+.page {
+  min-height: 100svh;
+  padding-bottom: 90px;
+  background: #0d0e0c;
+  color: #f5f2e9;
+}
+
+.header {
+  border-bottom: 1px solid #302c21;
+  background: #11120f;
+}
+
+.headerInner {
+  display: flex;
+  width: min(100% - 36px, 1120px);
+  min-height: 74px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: auto;
+}
+
+.brand { display: inline-flex; min-width: 0; align-items: center; gap: 11px; }
+.brandMark {
+  display: grid;
+  width: 43px;
+  height: 43px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #8e733b;
+  border-radius: 12px;
+  background: #231e14;
+  color: #e3c47c;
+}
+.brandMark svg { width: 26px; height: 26px; }
+.brandText { display: grid; gap: 3px; }
+.brandText strong { color: #f3e5c4; font-family: Georgia, serif; font-size: 19px; font-weight: 400; }
+.brandText span { color: #b4a788; font-size: 9px; font-weight: 700; letter-spacing: 1.6px; }
+
+.main { width: min(100% - 36px, 1120px); margin: 0 auto; padding-top: 37px; }
+.heading, .cardHeader, .sectionHeading { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.heading { margin-bottom: 24px; }
+.eyebrow { margin: 0 0 9px; color: #d3b46b; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; line-height: 1.5; }
+.eyebrow span { padding-inline: 5px; color: #70634a; }
+.heading h1 { margin: 0; color: #f6f1e4; font-family: Georgia, serif; font-size: clamp(32px, 4vw, 44px); font-weight: 400; line-height: 1.1; text-transform: none; }
+.heading > div > p:last-child { margin: 9px 0 0; color: #a8a79c; font-size: 13px; }
+.headingBadge { margin-top: 8px; padding: 8px 10px; border: 1px solid #403a29; border-radius: 5px; color: #ccba8d; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; white-space: nowrap; }
+
+.welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .75fr);
+  gap: 28px;
+  padding: 28px 30px;
+  border: 1px solid #62512e;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 92% 10%, #46371c 0, transparent 47%), linear-gradient(120deg, #211d14, #151611 75%);
+}
+.welcomeCopy { align-self: center; min-width: 0; }
+.welcomeCopy h2 { overflow-wrap: anywhere; color: #f6f1e3; font-family: Georgia, serif; font-size: clamp(25px, 3vw, 34px); font-weight: 400; line-height: 1.2; }
+.welcomeCopy h2 span { color: #e8ca85; }
+.welcomeCopy > p:last-child { margin: 9px 0 0; color: #c4beae; font-size: 13px; line-height: 1.6; }
+.welcomeDetails { display: grid; gap: 18px; align-content: center; padding-left: 27px; border-left: 1px solid #655333; }
+.detail { display: flex; min-width: 0; align-items: flex-start; gap: 11px; }
+.detailIcon, .metricIcon, .historyIcon, .emptyIcon { display: grid; flex: 0 0 auto; place-items: center; color: #ddbd77; }
+.detailIcon { width: 33px; height: 33px; border: 1px solid #695631; border-radius: 9px; background: #292316; }
+.detailIcon svg { width: 17px; height: 17px; }
+.detail > div { display: grid; min-width: 0; gap: 4px; }
+.detail > div > span { color: #b8aa89; font-size: 9px; font-weight: 700; letter-spacing: 1.1px; }
+.detail strong { overflow-wrap: anywhere; color: #f1e8d5; font-size: 13px; font-weight: 600; line-height: 1.4; }
+
+.contentGrid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; margin-top: 18px; }
+.shiftCard, .overview, .history { min-width: 0; border: 1px solid #302d24; border-radius: 14px; background: #171815; }
+.shiftCard, .overview, .history { padding: 25px; }
+.cardHeader h2, .sectionHeading h2 { color: #f2eee4; font-family: Georgia, serif; font-size: 24px; font-weight: 400; }
+.pendingBadge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 9px; border: 1px solid #65552f; border-radius: 20px; color: #e6c982; font-size: 10px; font-weight: 600; white-space: nowrap; }
+.pendingBadge span { width: 6px; height: 6px; border-radius: 50%; background: #d7b76c; }
+.cardDescription { margin: 13px 0 20px; color: #a9a99f; font-size: 12px; line-height: 1.6; }
+.timerPanel { padding: 23px 15px 20px; border: 1px solid #294435; border-radius: 10px; background: linear-gradient(145deg, #13251b, #101b15); text-align: center; }
+.timerLabel { display: flex; align-items: center; justify-content: center; gap: 7px; color: #9ac6a7; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; }
+.timerLabel svg { width: 15px; height: 15px; }
+.timer { margin-top: 9px; color: #94d4a9; font-size: clamp(34px, 5vw, 48px); font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 3px; line-height: 1; }
+.timerPanel p { margin: 10px 0 0; color: #a6bbaa; font-size: 11px; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.actions button { display: flex; min-height: 52px; align-items: center; justify-content: center; gap: 9px; border-radius: 8px; font: inherit; font-size: 13px; font-weight: 700; }
+.actions svg { width: 18px; height: 18px; }
+.actions button:disabled { cursor: not-allowed; }
+.punchIn { border: 1px solid #bba05f; background: #c8a75e; color: #242011; }
+.punchOut { border: 1px solid #874b47; background: #432623; color: #f0c1ba; }
+.setupMessage { margin: 12px 0 0; color: #c8b994; font-size: 11px; line-height: 1.5; text-align: center; }
+
+.overview { display: flex; flex-direction: column; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.metric { min-width: 0; padding: 16px; border: 1px solid #39352a; border-radius: 10px; background: #1c1d19; }
+.metricIcon { width: 35px; height: 35px; border: 1px solid #51462e; border-radius: 9px; background: #292419; }
+.metricIcon svg { width: 18px; height: 18px; }
+.metric p { margin: 16px 0 8px; color: #bdbbb1; font-size: 12px; }
+.metric strong { display: block; color: #f3ead6; font-size: 28px; font-weight: 500; line-height: 1; }
+.metric > span:last-child { display: block; margin-top: 9px; color: #a6a69c; font-size: 10px; line-height: 1.5; }
+.rateNote { display: flex; align-items: flex-start; gap: 11px; margin-top: auto; padding: 17px 0 0; color: #d9c39a; }
+.rateIcon { display: grid; width: 28px; height: 28px; flex: 0 0 auto; place-items: center; border: 1px solid #5b4d2e; border-radius: 50%; color: #d9bb79; }
+.rateNote strong { font-size: 12px; }
+.rateNote p { margin: 5px 0 0; color: #a9a99f; font-size: 11px; line-height: 1.6; }
+
+.history { margin-top: 18px; scroll-margin-top: 20px; }
+.historyIcon { width: 38px; height: 38px; border: 1px solid #51462e; border-radius: 9px; background: #292419; }
+.historyIcon svg { width: 20px; height: 20px; }
+.emptyState { display: flex; align-items: center; gap: 15px; margin-top: 21px; padding: 20px; border: 1px dashed #494439; border-radius: 10px; background: #141512; }
+.emptyIcon { width: 42px; height: 42px; border-radius: 50%; background: #292419; }
+.emptyIcon svg { width: 20px; height: 20px; }
+.emptyState strong { color: #ddd8c9; font-size: 13px; }
+.emptyState p { margin: 5px 0 0; color: #a9a99f; font-size: 12px; line-height: 1.5; }
+.footer { margin: 25px 0 0; color: #8d897b; font-size: 9px; letter-spacing: 1.3px; text-align: center; }
+.footer span { color: #c3a360; }
+
+.bottomNav { position: fixed; z-index: 10; right: 0; bottom: 0; left: 0; padding-bottom: env(safe-area-inset-bottom); border-top: 1px solid #353125; background: #131410; }
+.navInner { display: flex; width: min(100%, 520px); min-height: 64px; align-items: stretch; justify-content: space-around; margin: auto; }
+.navItem { display: flex; min-width: 90px; align-items: center; justify-content: center; flex-direction: column; gap: 4px; padding: 8px; color: #aaa99e; font-size: 10px; }
+.navItem svg { width: 20px; height: 20px; }
+.navActive { color: #e5c479; }
+.brand:focus-visible, .navItem:focus-visible { outline: 2px solid #e3c47c; outline-offset: 3px; }
+
+@media (max-width: 720px) {
+  .main { padding-top: 26px; }
+  .welcome { grid-template-columns: 1fr; gap: 20px; padding: 23px; }
+  .welcomeDetails { grid-template-columns: 1fr 1fr; gap: 16px; padding: 18px 0 0; border-top: 1px solid #655333; border-left: 0; }
+  .contentGrid { grid-template-columns: 1fr; }
+  .shiftCard, .overview, .history { padding: 21px; }
+  .rateNote { padding-top: 18px; }
+}
+
+@media (max-width: 400px) {
+  .headerInner, .main { width: calc(100% - 28px); }
+  .brandText strong { font-size: 17px; }
+  .headingBadge { display: none; }
+  .welcomeDetails { grid-template-columns: 1fr; }
+  .metric { padding: 13px; }
+}

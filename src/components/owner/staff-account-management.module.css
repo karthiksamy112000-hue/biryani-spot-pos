@@ -1,0 +1,59 @@
+.section { margin-top: 48px; padding-top: 30px; border-top: 1px solid #393326; }
+.sectionHeading { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.sectionHeading h2 { margin: 0; color: #f4eddd; font-family: Georgia, serif; font-size: 27px; font-weight: 400; }
+.sectionHeading > span { color: #b7b3a5; font-size: 11px; }
+.eyebrow, .panelEyebrow { margin: 0 0 8px; color: #d3b46b; font-size: 9px; font-weight: 700; letter-spacing: 1.45px; }
+.setupNotice { margin: 0 0 16px; padding: 12px 14px; border: 1px solid #66542f; border-radius: 8px; background: #211d14; color: #e0c782; font-size: 12px; line-height: 1.6; }
+.managementGrid { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(0, 1.25fr); align-items: start; gap: 16px; }
+.createPanel, .staffCard { min-width: 0; padding: 20px; border: 1px solid #49402d; border-radius: 12px; background: linear-gradient(145deg, #201d16, #151612 80%); }
+.createPanel h3, .staffHeading h3 { margin: 0; color: #f3ead6; font-family: Georgia, serif; font-size: 20px; font-weight: 400; line-height: 1.35; }
+.description { margin: 8px 0 17px; color: #b7b3a5; font-size: 12px; line-height: 1.6; }
+.createForm, .formFields, .accountList, .assignmentForm { display: grid; gap: 13px; }
+.formFields { grid-template-columns: 1fr; }
+.formFields label { display: grid; gap: 6px; color: #dbd3bf; font-size: 11px; }
+.formFields input { width: 100%; min-height: 42px; padding: 0 10px; border: 1px solid #4d4636; border-radius: 5px; background: #11120f; color: #f5f2e9; font: inherit; }
+.formFields input:focus-visible { outline: 2px solid #d3b46b; outline-offset: 2px; }
+.branchOptions { display: flex; flex-wrap: wrap; gap: 8px 14px; min-width: 0; margin: 0; padding: 0; border: 0; }
+.branchOptions legend { width: 100%; margin-bottom: 2px; color: #c9c1ae; font-size: 10px; font-weight: 700; letter-spacing: .5px; }
+.checkLabel { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid #51452f; border-radius: 7px; color: #e4dcc9; font-size: 11px; }
+.checkLabel input { width: 15px; height: 15px; accent-color: #d3b46b; }
+.checkLabel:has(input:checked) { border-color: #9c8047; background: #292316; }
+.primaryButton, .secondaryButton, .dangerButton { min-height: 40px; padding: 8px 12px; border-radius: 5px; cursor: pointer; font: inherit; font-size: 11px; font-weight: 700; transition: background 150ms ease, border-color 150ms ease; }
+.primaryButton { border: 1px solid #b49a5e; background: #c3a45f; color: #211d12; }
+.primaryButton:hover:not(:disabled) { background: #dcc17c; }
+.secondaryButton { border: 1px solid #675738; background: #242117; color: #e6d39e; }
+.secondaryButton:hover:not(:disabled) { border-color: #c3a45f; background: #302a1b; }
+.dangerButton { border: 1px solid #754943; background: #32201d; color: #f0c1ba; }
+.dangerButton:hover:not(:disabled) { border-color: #ae675e; background: #432623; }
+.primaryButton:disabled, .secondaryButton:disabled, .dangerButton:disabled { cursor: not-allowed; opacity: .52; }
+.accountList { grid-template-columns: 1fr; }
+.staffCard { display: grid; gap: 17px; }
+.staffHeading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.staffHeading > div { min-width: 0; }
+.staffHeading h3 { overflow-wrap: anywhere; }
+.staffHeading p { overflow-wrap: anywhere; margin: 5px 0 0; color: #b7b3a5; font-size: 11px; }
+.activeBadge, .inactiveBadge { flex: 0 0 auto; padding: 6px 9px; border-radius: 20px; font-size: 9px; font-weight: 700; letter-spacing: .4px; }
+.activeBadge { border: 1px solid #49634a; background: #1b291d; color: #a8cba8; }
+.inactiveBadge { border: 1px solid #65552f; background: #292316; color: #e3c47c; }
+.pendingBadge { border: 1px solid #76613a; background: #302717; color: #e9cd8c; }
+.assignmentForm { padding-top: 14px; border-top: 1px solid #373329; }
+.staffActions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.staffActions form { display: grid; align-content: start; gap: 8px; }
+.staffActions button { width: 100%; }
+.error, .success, .muted, .empty { margin: 0; font-size: 11px; line-height: 1.55; }
+.error { color: #f0a29b; }
+.success { color: #a8cba8; }
+.muted, .empty { color: #aaa597; }
+.empty { padding: 17px; border: 1px dashed #494439; border-radius: 10px; }
+.createForm :focus-visible, .staffCard :focus-visible { outline-color: #e3c47c; }
+@media (max-width: 760px) {
+  .managementGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .section { margin-top: 34px; padding-top: 24px; }
+  .createPanel, .staffCard { padding: 16px; }
+  .staffActions { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton, .secondaryButton, .dangerButton { transition: none; }
+}

@@ -1,0 +1,63 @@
+.page {
+  min-height: 100svh;
+  background: #0d0e0c;
+  color: #f5f2e9;
+}
+
+.header {
+  display: flex;
+  width: min(100% - 36px, 1120px);
+  min-height: 74px;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 1px solid #302c21;
+}
+
+.brand { display: inline-flex; align-items: center; gap: 11px; }
+.brandMark {
+  display: grid;
+  width: 43px;
+  height: 43px;
+  place-items: center;
+  border: 1px solid #8e733b;
+  border-radius: 12px;
+  background: #231e14;
+  color: #e3c47c;
+}
+.brandMark svg { width: 26px; height: 26px; }
+.brandText { display: grid; gap: 3px; }
+.brandText strong { color: #f3e5c4; font-family: Georgia, serif; font-size: 19px; font-weight: 400; }
+.brandText span { color: #b4a788; font-size: 9px; font-weight: 700; letter-spacing: 1.6px; }
+
+.content { display: grid; min-height: calc(100svh - 74px); place-items: center; padding: 38px 18px 70px; }
+.card {
+  width: min(100%, 520px);
+  padding: clamp(26px, 6vw, 42px);
+  border: 1px solid #62512e;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 90% 0, #3e321c, transparent 55%), #171815;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 25%);
+}
+.icon { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid #695631; border-radius: 12px; background: #292316; color: #e3c47c; }
+.icon svg { width: 26px; height: 26px; }
+.eyebrow { margin: 25px 0 10px; color: #d3b46b; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
+.card h1 { margin: 0; color: #f6f1e4; font-family: Georgia, serif; font-size: clamp(30px, 5vw, 38px); font-weight: 400; line-height: 1.15; text-transform: none; }
+.description { margin: 14px 0 0; color: #c4beae; font-size: 14px; line-height: 1.7; }
+.actions { display: grid; gap: 10px; margin-top: 26px; }
+.primary, .secondary {
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+.primary { border: 1px solid #d5b66e; background: #d5b66e; color: #211b0e; }
+.secondary { border: 1px solid #71603e; background: #201d16; color: #ead8af; cursor: pointer; }
+.secondary:disabled { cursor: wait; opacity: .7; }
+.actions p { margin: 2px 0 0; color: #f0a29b; font-size: 12px; line-height: 1.5; }
+.brand:focus-visible, .primary:focus-visible, .secondary:focus-visible { outline: 2px solid #e3c47c; outline-offset: 3px; }

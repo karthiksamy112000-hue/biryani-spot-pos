@@ -1,15 +1,18 @@
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { connection } from "next/server";
 import { getAuthenticatedPrincipal } from "@/lib/auth/dal";
 import type { PortalRole } from "@/lib/auth/roles";
-import { SignOutButton } from "./sign-out-button";
+import { OwnerBranchWorkspace } from "@/components/owner/owner-branch-workspace";
+import { getStaffManagementData } from "@/lib/auth/staff-accounts";
+import { StaffAttendanceDashboard } from "@/components/staff/staff-attendance-dashboard";
+import { StaffAccountRequired } from "./staff-account-required";
 
 type ProtectedPortalProps = {
   role: PortalRole;
+  branchParams?: Promise<{ branchId: string }>;
 };
 
-export async function ProtectedPortal({ role }: ProtectedPortalProps) {
+export async function ProtectedPortal({ role, branchParams }: ProtectedPortalProps) {
   await connection();
   const principal = await getAuthenticatedPrincipal();
 
@@ -18,43 +21,27 @@ export async function ProtectedPortal({ role }: ProtectedPortalProps) {
   }
 
   if (principal.role !== role) {
+    if (role === "staff" && principal.role === "owner") {
+      return <StaffAccountRequired />;
+    }
+
     redirect(principal.role === "owner" ? "/owner" : "/staff");
   }
 
-  const title = role === "owner" ? "Owner Management" : "Staff POS";
+  if (role === "staff") {
+    return <StaffAttendanceDashboard principal={principal} />;
+  }
 
-  return (
-    <main className="placeholder-shell">
-      <header className="topbar">
-        <Link className="brand" href="/" aria-label="Biryani Spot portal selection">
-          <span className="brand-monogram" aria-hidden="true">BS</span>
-          <span className="brand-label">
-            <span>Biryani Spot</span>
-            <span>Operations</span>
-          </span>
-        </Link>
-        <SignOutButton />
-      </header>
+  if (branchParams) {
+    const { branchId } = await branchParams;
+    const selectedBranch = principal.branches.find((branch) => branch.id === branchId);
+    if (!selectedBranch) {
+      notFound();
+    }
 
-      <section className="workspace-main" aria-labelledby="workspace-title">
-        <p className="eyebrow">VERIFIED {role.toUpperCase()} SESSION</p>
-        <h1 id="workspace-title">{title}</h1>
-        <p className="workspace-greeting">Signed in as {principal.displayName}</p>
-        <div className="branch-section">
-          <h2>{role === "owner" ? "Active branches" : "Assigned branch"}</h2>
-          <ul className="branch-list">
-            {principal.branches.map((branch) => (
-              <li key={branch.id}>
-                <span className="branch-indicator" aria-hidden="true" />
-                {branch.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <p className="workspace-note">
-          Secure access is ready. POS and management workflows will be added in later phases.
-        </p>
-      </section>
-    </main>
-  );
+    return <OwnerBranchWorkspace principal={principal} selectedBranch={selectedBranch} />;
+  }
+
+  const staffManagement = await getStaffManagementData(principal);
+  return <OwnerBranchWorkspace principal={principal} staffManagement={staffManagement} />;
 }

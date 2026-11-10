@@ -4,26 +4,51 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createBrowserSupabaseClient } from "@/lib/supabase/browser";
 
-export function SignOutButton() {
+type SignOutButtonProps = {
+  label?: string;
+  destination?: "/" | "/staff/login";
+  className?: string;
+  showError?: boolean;
+};
+
+export function SignOutButton({
+  label = "Sign out",
+  destination = "/",
+  className = "sign-out-button",
+  showError = false,
+}: SignOutButtonProps) {
   const [pending, setPending] = useState(false);
+  const [failed, setFailed] = useState(false);
   const router = useRouter();
 
   async function signOut() {
     setPending(true);
-    const { error } = await createBrowserSupabaseClient().auth.signOut();
+    setFailed(false);
 
-    if (error) {
+    try {
+      const { error } = await createBrowserSupabaseClient().auth.signOut();
+      if (error) {
+        setFailed(true);
+        setPending(false);
+        return;
+      }
+    } catch (error) {
+      console.error("Sign out failed:", error);
+      setFailed(true);
       setPending(false);
       return;
     }
 
-    router.replace("/");
+    router.replace(destination);
     router.refresh();
   }
 
   return (
-    <button className="sign-out-button" disabled={pending} onClick={signOut} type="button">
-      {pending ? "Signing out..." : "Sign out"}
-    </button>
+    <>
+      <button className={className} disabled={pending} onClick={signOut} type="button">
+        {pending ? "Signing out..." : label}
+      </button>
+      {showError && failed && <p role="alert">Unable to sign out. Please try again.</p>}
+    </>
   );
 }

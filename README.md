@@ -16,6 +16,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Owner-managed Staff accounts
+
+The Owner workspace can invite Staff, assign active branches, activate or
+deactivate accounts, and send password-reset links. Invitation and reset links
+use `/staff/update-password` to let Staff set their own password.
+
+Configure `NEXT_PUBLIC_SITE_URL` with the app's origin and
+`SUPABASE_SERVICE_ROLE_KEY` in server-only environment configuration. Never
+prefix the service-role key with `NEXT_PUBLIC_` or expose it to browser code.
+Add the `/staff/update-password` URL for each app origin to the Supabase Auth
+redirect allow list, and configure Supabase Auth email delivery. Account
+provisioning and activation controls remain unavailable until the required
+server configuration is present.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
